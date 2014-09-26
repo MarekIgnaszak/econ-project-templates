@@ -61,6 +61,8 @@ def path_to(ctx, pp_key, *args):
 def configure(ctx):
     ctx.env.PYTHONPATH = os.getcwd()
     ctx.load('why')
+    # Disable on a machine where security risks could arise
+    ctx.env.PDFLATEXFLAGS = '-shell-escape'
     ctx.load('biber')
     ctx.load('run_m_script')
     ctx.load('sphinx_build')

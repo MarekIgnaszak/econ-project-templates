@@ -1,3 +1,6 @@
+#! python
+
+
 '''
 DIFFERENT DATASET SPECIFICATIONS FOR REGRESSION ON INDICATOR VARIABLES:
     'EST'  = OLS estimates from regressing main variables (mortality, expropr. risk, GDP) on

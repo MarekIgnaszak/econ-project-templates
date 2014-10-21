@@ -24,8 +24,8 @@ def build(ctx):
         source='figure1_mortality.do',
         target=[
             out_analysis('log', 'figure1_mortality.log'),
-            out_figures('risk_mort.png'),
-            out_figures('gdp_mort.png')
+            out_figures('risk_mort.eps'),
+            out_figures('gdp_mort.eps')
         ],
         deps=[out_data('ajrcomment_all.dta')]
     )

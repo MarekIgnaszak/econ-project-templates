@@ -122,7 +122,7 @@ twoway scatter risk_b0 risk_c0 risk_s0 risk_b1 risk_c1 risk_s1 logmort, ///
 	cols(4) colgap(1) textwidth(18)  symxsize(5) ///
 	nobox bmargin(zero) region(lcolor(none)) size(2.5)  span)
 	
-graph export `"${PATH_OUT_FIGURES}/risk_mort.png"', replace
+graph export `"${PATH_OUT_FIGURES}/risk_mort.eps"', replace
 
 
 // FIGURE 2B REDUCED FORMS
@@ -162,4 +162,4 @@ twoway scatter loggdp_b0 loggdp_c0 loggdp_s0 loggdp_b1 loggdp_c1 loggdp_s1 logmo
 	cols(4) colgap(1) textwidth(18) symxsize(5) ///
 	nobox bmargin(zero) region(lcolor(none)) size(2.5) span)
 
-graph export `"${PATH_OUT_FIGURES}/gdp_mort.png"', replace
+graph export `"${PATH_OUT_FIGURES}/gdp_mort.eps"', replace

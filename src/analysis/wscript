@@ -21,6 +21,6 @@ def build(ctx):
                 ctx.path_to(ctx, 'IN_MODEL_CODE', 'move_until_happy.m'),
                 ctx.path_to(ctx, 'OUT_DATA', 'sample.mat'),
             ],
-            append=model,
+            append="('{}')".format(model),
             name='{}_{}'.format(source, model)
         )

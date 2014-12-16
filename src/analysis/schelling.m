@@ -5,6 +5,7 @@ the command line that needs to correspond to a file called [model_name].json
 in the "IN_MODEL_SPECS" directory. The model name is then recovered form the 
 command line and made available through the matlab variable named "append".
 %}
+function schelling(model_name)
 
 % Add the path to the 'project_paths'-function
 addpath ../../bld/
@@ -19,7 +20,6 @@ json.startup
 % Load random sample with initial locations
 load(project_paths('OUT_DATA', 'sample.mat'));
 
-model_name = append; % append is the task generator variable passed from the command line
 
 % Load model specifications
 model = json.read(project_paths('IN_MODEL_SPECS', [model_name, '.json']));

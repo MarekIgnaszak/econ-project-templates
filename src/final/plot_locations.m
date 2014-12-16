@@ -3,10 +3,10 @@ Load agents' location at each cycle from bld/out/analysis. Create a
 Matlab figure by plotting each agent's location at every cycle. 
 %}
 
+function plot_locations(model_name)
+
 % Add the path to the 'project_paths'-function
 addpath ../../bld/
-
-model_name = append; % append is the task variable passed from the command line
 
 load(project_paths('OUT_ANALYSIS', ['schelling_', model_name, '.mat']));
 

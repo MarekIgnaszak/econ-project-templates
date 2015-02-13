@@ -1,5 +1,7 @@
 program define tabout
-*! 2.0.6 Ian Watson 22nov2012
+*! 2.0.7 Ian Watson 5jan2015
+* bug fix - missing se option when doing counts for svy col and row totals, resulting in cell se not count se going into col and row totals, thanks Anwar Dudekula
+* 2.0.6 Ian Watson 22nov2012
 * added sort option, as per Thomas Odeny request
 * bug fix - where variables have complete missing values, a warning is issues and program terminates, thanks Richard Fox
 * 2.0.5 Ian Watson 31may2011
@@ -870,11 +872,11 @@ program svy_mat
     }
     else {
         $dots
-        $debug svy, subpop(`touse'): tab `hvar' if `v'<., `extra' 
+        $debug svy, subpop(`touse'): tab `hvar' if `v'<., `extra' se
         mat svyrow = e(V)
         mat rawrt = e(b)
         $dots
-        $debug svy, subpop(`touse'): tab `v' if `hvar'<., `extra' 
+        $debug svy, subpop(`touse'): tab `v' if `hvar'<., `extra' se
         mat svycol = e(V)
         mat rawct = e(b)
         if "`svycat'"=="" | "`svycat'"=="count" ///

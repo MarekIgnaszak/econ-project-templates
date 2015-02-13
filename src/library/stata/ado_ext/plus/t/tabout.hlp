@@ -1,5 +1,5 @@
 {smcl}
-{* 26nov2012}{...}
+{* 5jan2015}{...}
 {hline}
 help for {hi:tabout}
 {hline}
@@ -666,7 +666,7 @@ namely, nlsw88.dta and voter.dta.
 Numerous people have provided feedback and advice over the last two years 
 and I am very grateful for their comments. In particular I'd like to thank:  
 Mitch Abdon, Ulrich Atz, JP Azevedo, Megan Blaxland, Eric Booth, Simon Coulombe, 
-Enzo Coviello, Nick Cox, Axel Engellandt,  David L. Eckles, Richard Fox, 
+Enzo Coviello, Nick Cox, Anwar Dudekula, Axel Engellandt,  David L. Eckles, Richard Fox, 
 Jonathan Gardner, Johannes Geyer, Bill Gould, Daniel Hoechle, Ben Jann, 
 Stephen Jenkins, Stas Kolenikov, Thomas Masterson, Scott Merryman, 
 Nirmala Devi Naidoo, Thomas Odeny, Cathy Redmond, Mikko Ronkko, 
@@ -689,4 +689,4 @@ Thanks also to Arjan Soede for contributing the code for the dpcomma option.
    www.ianwatson.com.au
 
 
-Version 2.0.6 26nov2012
+Version 2.0.7 5jan2015

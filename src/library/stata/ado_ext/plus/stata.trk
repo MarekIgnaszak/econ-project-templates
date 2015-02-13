@@ -1,4 +1,4 @@
-* 00000003
+* 00000005
 *! version 1.0.0
 * Do not erase or edit this file
 * It is used by Stata to track the ado and help
@@ -41,8 +41,8 @@ f l/listtab_vars.sthlp
 e
 S http://fmwww.bc.edu/repec/bocode/e
 N estout.pkg
-D 12 Feb 2014
-U 2
+D 13 Feb 2015
+U 4
 d 'ESTOUT': module to make regression tables
 d 
 d  estout produces a table of regression results from one or
@@ -64,7 +64,7 @@ d KW: output
 d 
 d Requires: Stata version 8.2
 d 
-d Distribution-Date: 20091012
+d Distribution-Date: 20140604
 d 
 d Author: Ben Jann, University of Bern
 d Support: email jann@@soz.unibe.ch
@@ -84,8 +84,8 @@ f e/esttab.hlp
 e
 S http://fmwww.bc.edu/repec/bocode/t
 N tabout.pkg
-D  3 Mar 2014
-U 3
+D 13 Feb 2015
+U 5
 d 'TABOUT': module to export publication quality cross-tabulations
 d 
 d  tabout is a table building program for oneway and twoway
@@ -106,7 +106,7 @@ d KW: delimited text
 d 
 d Requires: Stata version 9.2
 d 
-d Distribution-Date: 20130121
+d Distribution-Date: 20150112
 d 
 d Author: Ian Watson , Macquarie University, Australia
 d Support: email mail@@ianwatson.com.au

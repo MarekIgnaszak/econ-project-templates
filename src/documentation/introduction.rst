@@ -86,4 +86,21 @@ To see what these variables are, here is the content of *bld/project_paths.do*:
 
 .. note::
 
-    Note the changes to Stata's built-in system pathse. **These changes imply that Stata will not find any packages you installed system-wide anymore.** It is desired behaviour; see :ref:`stata_packages` for an explanation and for how to add packages to your project.
+    Note the changes to Stata's built-in system pathse. **These changes imply that Stata will not find any packages you installed system-wide anymore.** It is desired behaviour; see the next section on :ref:`stata_packages` for an explanation and for how to add packages to your project.
+
+
+.. _stata_packages:
+
+Stata packages
+==============
+
+Note that when you include (or input) the file ``project_paths.do`` in your Stata script, the system directories get changed. **This means that Stata will not find any packages you installed system-wide anymore.** This is desired behaviour to ensure that you (and your coauthors) run the same versions of different packages that you installed via ``ssc`` or the like. The project template comes with a few of them, see *src/library/stata/ado_ext*.
+
+
+Adding additional Stata packages to a project
+---------------------------------------------
+
+#. Open a Stata command line session and change to the project root directory
+#. Type ``include bld/project_paths``
+#. Type ``sysdir`` and make sure that the ``PLUS`` and ``PERSONAL`` directories point to subdirectories of the project.
+#. Install your package via ssc, say ``ssc install tabout``

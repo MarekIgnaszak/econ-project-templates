@@ -8,6 +8,6 @@ Documentation of the code in **analysis**. Here's the core of the project. In ca
 
 Schelling example, :file:`schelling.m`:
 
-.. literalinclude:: ../analysis/schelling.m
+.. include:: ../analysis/schelling.m
    :start-after: %{
    :end-before: %}

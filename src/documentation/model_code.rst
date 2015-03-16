@@ -10,6 +10,6 @@ For example, you may have a class that is used both in the :ref:`analysis` and t
 
 Schelling example, :file:`move_until_happy.m`:
 
-.. literalinclude:: ../model_code/move_until_happy.m
+.. include:: ../model_code/move_until_happy.m
    :start-after: %{
    :end-before: %}

@@ -7,9 +7,6 @@ command line and made available through the matlab variable named "append".
 %}
 function schelling(model_name)
 
-% Add the path to the 'project_paths'-function
-addpath ../../bld/
-
 % Add path to relevant model code
 addpath ../model_code/
 
@@ -25,7 +22,7 @@ load(project_paths('OUT_DATA', 'sample.mat'));
 model = json.read(project_paths('IN_MODEL_SPECS', [model_name, '.json']));
 
 % Set random seed
-rng(model.rng_seed);
+rng(model.rng_seed, 'twister');
 
 % Initilize type-1 agents' locations
 agents = [ ...

@@ -5,9 +5,6 @@ Matlab figure by plotting each agent's location at every cycle.
 
 function plot_locations(model_name)
 
-% Add the path to the 'project_paths'-function
-addpath ../../bld/
-
 load(project_paths('OUT_ANALYSIS', ['schelling_', model_name, '.mat']));
 
 n_cycles = size(locations_by_round, 3);

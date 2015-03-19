@@ -6,14 +6,11 @@ the number of dimensions etc. from the "IN_MODEL_SPECS" file, this is
 to demonstrate the most basic use of run_m_script only. 
 %}
 
-% Add the path to the 'project_paths'-function
-addpath ../../bld/
-
 n_types = 2;
 n_draws = 30000;
 
 % Set random seed
-rng(12345)
+rng(12345, 'twister')
 
 % 3d matrix with random draws from a (0,1) uniform distribution
 sample = rand(n_draws, 2, n_types);

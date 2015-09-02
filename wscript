@@ -74,7 +74,6 @@ def configure(ctx):
     # Disable on a machine where security risks could arise
     ctx.env.PDFLATEXFLAGS = '-shell-escape'
     ctx.load('biber')
-    ctx.load('run_py_script')
     ctx.load('run_do_script')
     ctx.load('sphinx_build')
     ctx.load('write_project_headers')

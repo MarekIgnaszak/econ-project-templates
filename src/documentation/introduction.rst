@@ -86,7 +86,7 @@ To see what these variables are, here is the content of *bld/project_paths.do*:
 
 .. note::
 
-    Note the changes to Stata's built-in system pathse. **These changes imply that Stata will not find any packages you installed system-wide anymore.** It is desired behaviour; see the next section on :ref:`stata_packages` for an explanation and for how to add packages to your project.
+    Note the changes to Stata's built-in system paths. **These changes imply that Stata will not find any packages you installed system-wide anymore.** It is desired behaviour; see the next section on :ref:`stata_packages` for an explanation and for how to add packages to your project.
 
 
 .. _stata_packages:

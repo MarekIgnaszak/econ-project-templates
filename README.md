@@ -9,7 +9,7 @@ This is a collection of templates where much of this automation is pre-configure
 * Move your programs to the right places and change the placeholder scripts
 * Run Waf, which will build your entire project the first time you run it. Later, it will automatically figure out which parts of the project need to be rebuilt.
 
-The branch names follow the main language used in a particular example. You should base your project on the branch that specifies the language that you will use most. So the first thing to do is to switch branches using the button above, unless you plan on using Python mainly. You can easily add more languages to your projects, this is just a single line if the language is supported.
+The branch names follow the main language used in a particular example. You should base your project on the branch that specifies the language that you will use most. You can easily add more languages to your projects, this is just a single line if the language is supported. Consult the different branches for examples.
 
 
 

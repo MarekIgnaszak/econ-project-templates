@@ -57,6 +57,16 @@ See :download:`this pdf document </../../bld/src/documentation/dependency_graph.
 For the sake of simplicity, the dependency graph does not include the second stage estimation that ends up in Table 3. It would work in exactly the same way as the first stage estimation is outlined in the graph. Same for the figures. The overlapping nodes stand for all five model specifications, only the baseline specification is actually written out (of course, there should be five edges as well, in principle).
 
 
+.. _calling_stata:
+
+Calling Stata do-files from Waf
+===============================
+
+* Stata is always started in the ``bld``-directory. Keep that in mind and use the `project_paths`_-machinery.
+* Do-files will be called by Waf with the name of the do-file as its first argument. This is helpful for keeping log-files, see the top of any do-file in this project as examples.
+* You can pass additional arguments by using the ``append``-keyword of the Stata builder. See ``analysis/first_stage_estimation.do`` and the corresponding wscript-file for an example.
+
+
 .. _project_paths:
 
 Project paths

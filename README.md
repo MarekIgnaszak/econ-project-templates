@@ -34,13 +34,23 @@ Getting started (Stata-based project)
         UUU -> Your affiliation
         TTT -> The title of the project
 
-3. Make sure that [Python](http://python.org/) and a modern LaTeX distribution (e.g. [TeXLive](www.tug.org/texlive/), [MacTex](http://tug.org/mactex/), or [MikTex](http://miktex.org/)) can be found on your path (instructions to change the path on [Windows](http://hmgaudecker.github.io/econ-python-environment/windows_specifics.html) and [MacOS / Linux](http://hmgaudecker.github.io/econ-python-environment/macos_specifics.html)).
- 		
-Your Python distribution needs to have the packages [sphinx](http://sphinx-doc.org/) and [sphinxcontrib.bibtex](https://pypi.python.org/pypi/sphinxcontrib-bibtex/) installed; the [Anaconda Python distribution](https://store.continuum.io/cshop/anaconda/) is recommended. You will need to follow up by ``conda install sphinxcontrib-bibtex`` or similar after installing it.
+3. Make sure to have [Miniconda](http://conda.pydata.org/miniconda.html) or Anaconda installed. Stata and a modern LaTeX distribution (e.g. [TeXLive](www.tug.org/texlive/), [MacTex](http://tug.org/mactex/), or [MikTex](http://miktex.org/)) need to be found on your path.
 
-A detailed set of instructions for setting up an entire Python environment may be found [here](http://hmgaudecker.github.io/econ-python-environment).
+4. Navigate to the folder in a shell. Execute 
 
-4. Navigate to the folder in a shell. Type the following commands to see whether the examples are working:
+   **(Mac, Linux)**
+
+        source set-env.sh
+
+    **(Windows)**
+
+        set-env.bat
+
+    This will create a conda environment named as the current directory (returns-to-education in the above example) with a minimal Python setup.
+
+    A detailed set of instructions for setting up an entire Python environment may be found [here](http://hmgaudecker.github.io/econ-python-environment).
+
+4. Type the following commands to see whether the examples are working:
 
         python waf.py configure
         python waf.py build

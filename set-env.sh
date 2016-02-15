@@ -16,6 +16,11 @@ darwin*)  environment=".environment.osx.yml" ;;
 linux*)   environment=".environment.linux.yml"  ;;
 esac
 
+# check which os we're on
+case "$OSTYPE" in
+darwin*)  export PATH=$PATH:/Applications/Julia-0.4.3.app/Contents/Resources/julia/bin ;;
+esac
+
 # create environment if it does not exist or create is supplied
 # this install packages as well
 if [[ ($OUT -eq 1)  || ($1 == "create") || ($1 == "install") ]]; then

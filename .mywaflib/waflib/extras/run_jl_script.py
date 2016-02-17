@@ -21,7 +21,8 @@ Usage::
 
 """
 
-from waflib import Task, TaskGen, Logs
+import os
+from waflib import Task, TaskGen, Logs, Node
 
 
 JULIA_COMMANDS = ['julia']
@@ -67,10 +68,10 @@ class run_jl_script(Task.Task):
         """
 
         return "{prepend} [Julia] {fn} {append}".format(
-                prepend=self.env.PREPEND,
-                fn=self.inputs[0].path_from(self.inputs[0].ctx.launch_node()),
-                append=self.env.APPEND
-            )
+            prepend=self.env.PREPEND,
+            fn=self.inputs[0].path_from(self.inputs[0].ctx.launch_node()),
+            append=self.env.APPEND
+        )
 
 
 @TaskGen.feature('run_jl_script')
@@ -83,20 +84,19 @@ def apply_run_jl_script(tg):
 
     Attributes:
 
-                    * source -- A **single** source node or string. (required)
-                    * target -- A single target or list of targets (nodes or strings).
-                    * deps -- A single dependency or list of dependencies
-                      (nodes or strings)
-                    * prepend -- A string that will be prepended to the command
-                    * append -- A string that will be appended to the command
+        * source -- A **single** source node or string. (required)
+        * target -- A single target or list of targets (nodes or strings).
+        * deps -- A single dependency or list of dependencies (nodes or strings)
+        * prepend -- A string that will be prepended to the command
+        * append -- A string that will be appended to the command
 
     """
 
     # Convert sources and targets to nodes
     src_node = tg.path.find_resource(tg.source)
-    if not src_node:
+    if src_node is None:
         tg.bld.fatal(
-            'Cannot find input file %s for processing' % tg.source
+            "Could not find source file: {}".format(os.path.join(tg.path.relpath(), tg.source))
         )
     tgt_nodes = [tg.path.find_or_declare(t) for t in tg.to_list(tg.target)]
 
@@ -107,20 +107,21 @@ def apply_run_jl_script(tg):
     tsk.env.PREPEND = getattr(tg, 'prepend', '')
     tsk.buffer_output = getattr(tg, 'buffer_output', True)
 
-    # dependencies (if the attribute 'deps' changes, trigger a recompilation)
-    for x in tg.to_list(getattr(tg, 'deps', [])):
-        node = tg.path.find_resource(x)
+    # Dependencies (if the attribute 'deps' changes, trigger a recompilation)
+    deps = getattr(tg, 'deps', [])
+    if type(deps) == Node.Nod3:
+        deps = [deps]
+    for x in tg.to_list(deps):
+        if type(x) == Node.Nod3:
+            node = x
+        else:
+            node = tg.path.find_resource(x)
         if not node:
-            tg.bld.fatal(
-                'Could not find dependency %r for running %r'
-                % (x, src_node.relpath())
-            )
-        tsk.dep_nodes.append(node)
-    Logs.debug(
-        'deps: found dependencies %r for running %r' % (
-            tsk.dep_nodes, src_node.relpath()
-        )
-    )
+            tg.bld.fatal('Could not find dependency %r for running %r' % (x, src_node.relpath()))
+        else:
+            tsk.dep_nodes.append(node)
+
+    Logs.debug('deps: found dependencies %r for running %r' % (tsk.dep_nodes, src_node.relpath()))
 
     # Bypass the execution of process_source by setting the source to an empty list
     tg.source = []

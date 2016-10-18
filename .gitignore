@@ -56,6 +56,10 @@ scons.py
 src/sandbox
 test
 Test
+papers
+Papers
+literature
+Literature
 textmatetostata.do
 fake
 full

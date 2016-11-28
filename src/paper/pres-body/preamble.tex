@@ -1,0 +1,143 @@
+\documentclass[14pt]{beamer}
+%\documentclass[14pt,handout,notes=show]{beamer}
+%\documentclass[14pt,handout,notes=only]{beamer}
+\usepackage{graphicx}
+%\graphicspath{{figs/}}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, bm}
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{textcomp}
+\usepackage{subfig}
+\usepackage{enumitem}
+%\setlist[itemize,1]{label=\raisebox{0.1ex}{$\bullet$}, itemsep=.48em}
+\setlist[itemize,1]{label=\raisebox{-0.01ex}{\ding{227}}, itemsep=.48em}
+\setlist[itemize,2]{label=$\cdot$, itemsep=.45em}
+
+
+\usepackage[
+    natbib=true,
+    bibencoding=inputenc,
+    bibstyle=authoryear,
+    citestyle=authoryear-comp,
+    maxcitenames=3,
+    maxbibnames=10,
+    useprefix=false,
+    sortcites=true,
+    backend=biber,
+    doi=false, isbn=false, url=false
+]{biblatex}
+\bibliography{refs, nber-book}
+\usetheme{metropolis}
+%\metroset{everytitleformat=regular}
+\metroset{outer/progressbar=frametitle}
+%\metroset{inner/titleformat=regular}
+%\metroset{inner/sectiontitleformat=regular}
+%\metroset{inner/sectionpage=none}
+
+
+% HERE you change the main color for font instead of the grey one
+\definecolor{mainFontColor}{HTML}{000000}
+\setbeamercolor{frametitle}{%
+	use=palette primary,
+	fg= mainFontColor,
+	bg=white
+}
+
+\setbeamercolor{normal text}{%
+	fg=black!90,
+	bg=white
+}
+
+\setbeamercolor{section title}{%
+	use=palette primary,
+	fg= mainFontColor,
+	bg=white
+}
+
+\setbeamercolor{title}{%
+	use=palette primary,
+	fg= mainFontColor,
+	bg=white
+}
+
+\makeatletter
+\define@key{beamerframe}{wide}[.6em]{%
+	\def\beamer@cramped{\itemsep #1\topsep0.5pt\relax}}
+\makeatother
+
+\setbeamerfont{note page}{size=\scriptsize}
+\setbeamercolor{note page}{bg=white, fg=black}
+\setbeamercolor{note title}{bg=white, fg=black}
+
+\newenvironment{itemSpread}[1]
+    {\begin{itemize}
+    \setlength\itemsep{#1}
+    }
+    {
+    \end{itemize}
+    }
+
+\setlength{\parskip}{1ex}
+
+
+%declaration of new variables
+\newcommand{\dd}{\! \! \!}
+\newcommand{\ud}{\, \text{d}}
+\newcommand{\udt}{\ud t}
+\newcommand{\di}{ \! \! \ud i}
+
+\renewcommand{\iff}{\ensuremath{\Leftrightarrow}}
+\newcommand{\into}{\ensuremath{\rightarrow}}
+\newcommand{\lub}{\ensuremath{\,\vee\,}}
+\newcommand{\oraz}{\ensuremath{\,\wedge\,}}
+\newcommand{\then}{\ensuremath{\,\Rightarrow \,}}
+\newcommand{\neht}{\ensuremath{\Leftarrow}}
+\newcommand{\sumt}{\sum_{t=0}^{\infty}}
+\newcommand{\Y}{Y}
+\newcommand{\y}{\eta}
+
+\newcommand{\R}{\ensuremath{\mathbb{R}}} %Real numbers
+\newcommand{\E}{\ensuremath{\mathbb{E}}} %expected value
+
+%new mathematical operators
+\DeclareMathOperator{\Lagr}{\mathcal{L}}
+\DeclareMathOperator{\Ham}{\mathcal{H}}
+\DeclareMathOperator*{\argmin}{\text{arg min}}
+\DeclareMathOperator*{\argmax}{\text{arg max}}
+
+
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%
+}
+
+\newcommand{\ccitep}[1]{{\small \citep{#1}}}
+\newcommand{\xv}[1]{\mathbf{x}_{#1}}
+\newcommand{\sv}[1]{\mathbf{s}_{#1}}
+
+%\usepackage{array}
+%\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+%\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\definecolor{czerwony}{HTML}{ec1414}
+\newcommand{\czerws}[1]{{\textcolor{czerwony}{#1}}}
+
+\usepackage{cancel}
+\newcommand<>{\xxcancel}[1]{\alt#2{\xcancel{#1}\vphantom{#1}}{#1}}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\usefonttheme{professionalfonts}
+% required for mathspec
+\usepackage{mathspec}
+\setsansfont[BoldFont={Fira Sans SemiBold},Numbers={OldStyle}]{Fira Sans Book}
+%\setsansfont[BoldFont={Fira Sans},Numbers={OldStyle}]{Fira Sans Light}
+\setmathsfont(Digits)[Numbers={Lining, Proportional}]{Fira Sans Light}
+\newcommand{\alertb}[1]{\textbf{\alert{#1}}}

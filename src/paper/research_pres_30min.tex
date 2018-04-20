@@ -1,27 +1,165 @@
-% !TEX program = xelatex
+% !TeX program = xelatex
+% \documentclass[hidelinks, 12pt]{beamer}
+\documentclass[handout, notes=show, 12pt]{beamer}
 
-\input{pres-body/preamble.tex}
+\usetheme{metropolis}
+\usepackage{appendixnumberbeamer}
 
-\title{The Dark Corners of the Labor Market}
-\subtitle{Vincent Sterk}
-\author{Discussed by Marek Ignaszak}
-\date{July 5, 2016}
-\institute{Bonn GSE}
+\usepackage{graphicx}
 
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+
+\usepackage[
+   natbib=true,
+   bibencoding=inputenc,
+   bibstyle=authoryear,
+   citestyle=authoryear-comp,
+   maxcitenames=3,
+   maxbibnames=10,
+   useprefix=false,
+   sortcites=true,
+   sorting=ynt,
+   backend=biber,
+   doi=false, isbn=false, url=false
+]{biblatex}
+\bibliography{eui_references_single}
+\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans}
+\usefonttheme{professionalfonts}
+\usepackage{mathspec}
+ \setsansfont[BoldFont={Fira Sans SemiBold},Numbers={OldStyle}]{Fira Sans Book}
+ %\setsansfont[BoldFont={Fira Sans},Numbers={OldStyle}]{Fira Sans Light}
+\setmathsfont(Digits,Latin)[Numbers={Lining, Proportional}]{Fira Sans Light}
+
+% \usepackage{lmodern}
+\definecolor{mainFontColor}{HTML}{000000}
+
+\metroset{progressbar=none}
+
+% \setbeamercolor{progress bar in head/foot}{fg=mainFontColor,bg=mainFontColor}
+
+% \metroset{titleformat=smallcaps}
+\metroset{background=light}
+\metroset{numbering=none}
+
+\setbeamercolor{frametitle}{%
+	use=palette primary,
+	fg= mainFontColor,
+	bg=black!2
+}
+
+
+
+\usepackage{xpatch}
+
+\xpatchcmd{\itemize}
+  {\def\makelabel}
+  {\ifnum\@itemdepth=1\relax
+     \setlength\itemsep{2.15ex}% separation for first level
+   \else
+     \ifnum\@itemdepth=2\relax
+       \setlength\itemsep{1ex}% separation for second level
+     \else
+       \ifnum\@itemdepth=3\relax
+         \setlength\itemsep{0.5ex}% separation for third level
+   \fi\fi\fi\def\makelabel
+  }
+ {}
+ {}
+
+
+\setbeamertemplate{footline}{%
+   \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[10pt]{\scriptsize\insertframenumber}}}}
+
+\newenvironment{itemSpread}[1]
+    {\begin{itemize}
+    \setlength\itemsep{#1}
+    }
+    {
+    \end{itemize}
+    }
+
+\setlength{\parskip}{1ex}
+
+\newtheorem{proposition}{Proposition}
+
+%declaration of new variables
+\newcommand{\ud}{\, \mathrm{d}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\td}[2]{\frac{\ud #1}{\ud #2}}
+\newcommand{\into}{\ensuremath{\rightarrow}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}} %Real numbers
+\newcommand{\E}{\ensuremath{\mathbb{E}}} %expected value
+
+%new mathematical operators
+\DeclareMathOperator{\Lagr}{\mathcal{L}}
+\DeclareMathOperator{\Ham}{\mathcal{H}}
+\DeclareMathOperator*{\argmin}{\text{arg min}}
+\DeclareMathOperator*{\argmax}{\text{arg max}}
+
+
+\newcommand\Wider[2][3em]{%
+	\makebox[\linewidth][c]{%
+		\begin{minipage}{\dimexpr\textwidth+#1\relax}
+			\raggedright#2
+		\end{minipage}%
+	}%
+}
+
+\definecolor{ColForAlert}{HTML}{FEBE5D}
+\definecolor{redCol}{HTML}{D22500}
+\definecolor{greenCol}{HTML}{006400}
+\newcommand{\redText}[1]{\textcolor{redCol}{#1}}
+\newcommand{\alertCol}[1]{\textcolor{ColForAlert}{#1}}
+
+\definecolor{blueCol}{HTML}{0000cc}
+\newcommand{\blueText}[1]{\textcolor{blueCol}{#1}}
+
+\newcommand{\ccitep}[1]{{\small \citepp{#1}}}
+\newcommand{\titem}[1]{{\small \item #1}}
+\newcommand{\alertb}[1]{\textbf{\alertCol{#1}}}
+
+
+
+
+\title{tt}
+\author{Marek Ignaszak}
+\date{dd}
+\institute{ii}
+
+\setbeamertemplate{itemize subitem}{\tiny\raise1.75pt\hbox{$-$}}
 
 
 \begin{document}
+\beamertemplatenavigationsymbolsempty
 
 \begin{frame}
-    \titlepage
+  \centering
+	\maketitle
 \end{frame}
 
 
-\section*{Motivation}
-\input{pres-body/motivation}
-
-%%%%%%%%%%%%%% APPENDIX %%%%%%%%%%%%%
 \appendix
-\input{pres-body/appendix}
+\mode<beamer> {
+    \beamersetaveragebackground{black}
+    \begin{frame}
+        \frametitle{}
+    \end{frame}
+
+    \beamersetaveragebackground{white}
+}
+
+\begin{frame}[allowframebreaks]
+    %\frametitle{References}
+    \renewcommand{\bibfont}{\normalfont\footnotesize}
+    \printbibliography
+\end{frame}
+
+\end{document}
 
 \end{document}

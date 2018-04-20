@@ -53,7 +53,6 @@ final_out
 formatted_data
 project_documentation
 scons.py
-src/sandbox
 test
 Test
 papers

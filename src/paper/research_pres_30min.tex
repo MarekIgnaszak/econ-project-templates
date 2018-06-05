@@ -1,9 +1,13 @@
 % !TeX program = xelatex
 % !BIB program = biber
-% \documentclass[hidelinks, 12pt]{beamer}
-\documentclass[handout, notes=show, 12pt]{beamer}
+\documentclass[hidelinks, notes=hide, 12pt]{beamer}
+% \documentclass[handout, notes=show, 12pt]{beamer}
+
 
 \usetheme{metropolis}
+\usepackage{unicode-math}
+
+\usepackage{mathtools}
 \usepackage{appendixnumberbeamer}
 
 \usepackage{graphicx}
@@ -15,6 +19,7 @@
 \usepgfplotslibrary{dateplot}
 
 \usepackage{xspace}
+\usepackage{epstopdf}
 
 \usepackage[
    natbib=true,
@@ -30,29 +35,32 @@
    doi=false, isbn=false, url=false
 ]{biblatex}
 \bibliography{eui_references_single}
-%\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans}
-%\usefonttheme{professionalfonts}
-%\usepackage{mathspec}
+% \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans}
+% \usefonttheme{professionalfonts}
+% \usepackage{mathspec}
+
 % \setsansfont[BoldFont={Fira Sans SemiBold},Numbers={OldStyle}]{Fira Sans Book}
  %\setsansfont[BoldFont={Fira Sans},Numbers={OldStyle}]{Fira Sans Light}
-%\setmathsfont(Digits,Latin)[Numbers={Lining, Proportional}]{Fira Sans Light}
+% \setmathsfont(Digits,Latin)[Numbers={Lining, Proportional}]{Fira Sans Light}
+
+% \setmathfont[version=lm]{Latin Modern Math}
 
 % \usepackage{lmodern}
-% \definecolor{mainFontColor}{HTML}{000000}
+\definecolor{mainFontColor}{HTML}{394997}
 
 \metroset{progressbar=none}
 
-% \setbeamercolor{progress bar in head/foot}{fg=mainFontColor,bg=mainFontColor}
+\setbeamercolor{progress bar in head/foot}{fg=mainFontColor,bg=mainFontColor}
 
-% \metroset{titleformat=smallcaps}
-% \metroset{background=light}
-% \metroset{numbering=none}
+\metroset{titleformat=smallcaps}
+\metroset{background=light}
+\metroset{numbering=none}
 
-%\setbeamercolor{frametitle}{%
-%	use=palette primary,
-%	fg= mainFontColor,
-%	bg=black!2
-%}
+\setbeamercolor{frametitle}{%
+	use=palette primary,
+	fg= mainFontColor,
+	bg=black!2
+}
 
 
 
@@ -74,8 +82,11 @@
  {}
 
 
-\setbeamertemplate{footline}{%
-   \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[10pt]{\scriptsize\insertframenumber}}}}
+
+
+%  \setbeamertemplate{footline}{%
+%  \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[25pt]{\scriptsize\insertframenumber/\inserttotalframenumber}}}}
+
 
 \newenvironment{itemSpread}[1]
     {\begin{itemize}
@@ -111,6 +122,7 @@
 		\end{minipage}%
 	}%
 }
+
 
 \definecolor{ColForAlert}{HTML}{FEBE5D}
 \definecolor{redCol}{HTML}{D22500}

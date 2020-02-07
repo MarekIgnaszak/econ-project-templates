@@ -1,15 +1,13 @@
-% !TEX root = ../research_pres.tex
-
 \usepackage[english]{babel}
 \usepackage{a4wide}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
 \usepackage{float, afterpage, rotating, graphicx}
 \usepackage{epstopdf}
-\usepackage{longtable, booktabs, tabularx}
+\usepackage{longtable, booktabs, tabularx,threeparttable}
 \usepackage{fancyvrb, moreverb, relsize}
 \usepackage{eurosym, calc, chngcntr}
-\usepackage{amsmath, amssymb, amsfonts, amsthm, bm}
+\usepackage{mathtools, amssymb, amsfonts, amsthm, bm}
 \usepackage{caption}
 \usepackage{mdwlist}
 \usepackage{xfrac}
@@ -17,57 +15,45 @@
 \usepackage{xcolor}
 \usepackage{enumerate}
 \usepackage{geometry}
-% \usepackage{pdf14} % Enable for Manuscriptcentral -- can't handle pdf 1.5
+\usepackage{ragged2e} % to reverse centering by \justify
+
+% to merge rows in the table into one. USAGE:
+% age, industry,     &   \multirow{ 2}{*}{Yes}   & \multirow{ 2}{*}{Yes} \\
+% year fixed effects \\
+\usepackage{multirow} 
+
 % \usepackage{endfloat} % Enable to move tables / figures to the end. Useful for some submissions.
 
 \usepackage{subfig}
-\usepackage{tgpagella}
-\usepackage{unicode-math}
-% \setmainfont[
-%   BoldFont=texgyrepagella-bold.otf,
-%   ItalicFont=texgyrepagella-italic.otf,
-%   BoldItalicFont=texgyrepagella-bolditalic.otf]
-%   {texgyrepagella-regular.otf}
-% \setmathfont{texgyrepagella-math.otf}
-
-% \setmainfont{LibreBaskerville}[%
-%   Path = /home/ignaszak/.local/share/fonts/ ,
-%   UprightFont = *-Regular ,
-%   BoldFont = *-Bold ,
-%   ItalicFont = *-Italic ,
-%   Extension = .ttf
-% ]
-% \setmainfont[
-%   BoldFont= /home/ignaszak/.local/share/fonts/LibreBaskerville-Bold.ttf,
-%   ItalicFont= /home/ignaszak/.local/share/fonts/LibreBaskerville-Italic.ttf]
-  % {/home/ignaszak/.local/share/fonts/LibreBaskerville-Regular.ttf}
-% \setmathfont{texgyrepagella-math.otf}
-
-
-\linespread{1.05}         % Palladio needs more leading (space between lines)
-\usepackage{epstopdf}
 
 \usepackage[
+    sortcites=true,
+    sorting=ynt,
     natbib=true,
     bibencoding=inputenc,
-    bibstyle=authoryear,
-    citestyle=authoryear-comp,
-    maxcitenames=3,
+    % bibstyle=authoryear,
+    % citestyle=authoryear-comp,
+    style=chicago-authordate,
+    maxcitenames=2,
     maxbibnames=10,
     useprefix=false,
-    sortcites=true,
     backend=biber,
-    doi=false, isbn=false, url=false, eprint=false
+    doi=false, isbn=false, url=false, eprint=false,
+    uniquelist=false
 ]{biblatex}
+
+% \usepackage[authordate,backend=biber]{biblatex-chicago}
 
 \AtBeginDocument{\toggletrue{blx@useprefix}}
 \AtBeginBibliography{\togglefalse{blx@useprefix}}
 \setlength{\bibitemsep}{1.5ex}
 
+\definecolor{linkCol}{HTML}{841212}
+
 \usepackage[unicode=true]{hyperref}
 \hypersetup{
     colorlinks=true,
-    linkcolor=black,
+    linkcolor=linkCol,
     anchorcolor=black,
     citecolor=black,
     filecolor=black,
@@ -76,27 +62,45 @@
     urlcolor=black
 }
 
+%%%%%%%%%%%% FONT %%%%%%%%%%%%
+% \usepackage{fontspec} 
+% \usepackage{unicode-math}
+% % \usepackage[charter]{mathdesign}
+% \setmainfont[Mapping=tex-text,Ligatures=TeX]{TeX Gyre Pagella}
+% % \setmathfont{Asana-Math.otf}
+% \setmathfont{latinmodern-math.otf}
+% % \setmathfont[math-style=ISO,bold-style=ISO]{texgyrepagella-math.otf}
+% \linespread{1.05}         % Palladio needs more leading (space between lines)
 
+
+\usepackage{fourier}
+
+% \usepackage{lmodern}
+
+\newcommand{\linkText}[1]{{\textcolor{linkCol}{#1}}}
 \widowpenalty=10000
 \clubpenalty=10000
 
-\setlength{\parskip}{1ex}
-%\setlength{\parindent}{.5ex}
+\setlength{\parskip}{0ex}
+% \setlength{\parindent}{0ex}
 \setstretch{1.5}
 
 \theoremstyle{plain}
 
-\newtheorem{assumpt}{Assumption}
-\newtheorem{thrm}[assumpt]{Theorem}
-\newtheorem{propos}[assumpt]{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}[assumption]{Theorem}
+\newtheorem{proposition}[assumption]{Proposition}
 %\theoremstyle{remark}
-\newtheorem{lemma}[assumpt]{Lemma}
+\newtheorem{lemma}[assumption]{Lemma}
 \theoremstyle{definition}
-\newtheorem{defin}[assumpt]{Definition}
+\newtheorem{definition}[assumption]{Definition}
 %declaration of new variables
-\newcommand{\ud}{\,\!\mathrm{d}}
-\newcommand{\dt}{\! \! \ud t}
-\newcommand{\di}{ \! \! \ud i}
+\newcommand{\ud}{\,\mathrm{d}}
+\newcommand{\di}{\ud i}
+\newcommand{\dw}{\ud \omega}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdinline}[2]{ \partial #1/\partial #2}
+\newcommand{\td}[2]{\frac{\ud #1}{\ud #2}}
 
 \renewcommand{\iff}{\ensuremath{\Leftrightarrow}}
 \newcommand{\into}{\ensuremath{\rightarrow}}
@@ -107,7 +111,14 @@
 
 \newcommand{\tinf}{_{t=0}^{\infty}}
 
-\newcommand{\R}{\ensuremath{\mathbb{R}}} %Real numbers
+\newcommand{\R}{\mathbb{R}} %Real numbers
+\newcommand{\Se}{\mathcal{S}} % Borel set
+\newcommand{\margc}{{MC}} % marginal cost
+
+
+\newcommand{\opts}{\bar{k}(z)} % optimal size
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert} % norm
 
 %new mathematical operators
 \DeclareMathOperator{\Lagr}{\mathcal{L}}
@@ -115,11 +126,16 @@
 \DeclareMathOperator*{\argmin}{\text{arg min}}
 \DeclareMathOperator*{\argmax}{\text{arg max}}
 \DeclareMathOperator{\E}{\mathbb{E}} % expected value
+\DeclareMathOperator{\prob}{\mathbb{{P}}}
 
 %new environments
-\newcommand{\przypis}[1]{\footnotesize{#1}} %przypis{blahblah}, small font
 \newcommand{\myvector}[3]{\begin{bmatrix} {#1} \\ {#2} \\ \vdots \\ {#3} \end{bmatrix}}
 
 %visual customization
 \renewcommand{\labelitemi}{$\bullet$}
 \renewcommand{\textapprox}{\raisebox{0.5ex}{\texttildelow}}
+
+\newcommand{\fignotes}[1]{ {\footnotesize   Note: #1 } }
+\newcommand{\figtitle}[1]{ { \footnotesize \textbf{#1}} }
+
+\graphicspath{{../../bld/out/figures/}}
